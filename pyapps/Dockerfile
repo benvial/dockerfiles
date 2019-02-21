@@ -42,9 +42,9 @@ RUN pip install sphinx sphinx_bootstrap_theme sphinx_gallery \
     python-dotenv ipython Image \
     pytest pytest-cov black
 
+RUN echo "export PS1='\[\033[1;31m\]\${APPNAME} \[\033[1;34m\]\W\[\033[0;35m\] \[\033[1;36m\]\n# \[\033[0m\]'" >> ~/.bashrc
 
-    
-RUN echo "echo ----- pyapps ------" >> ~/.bashrc 
+ENV APPNAME pyapps
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
