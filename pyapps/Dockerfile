@@ -11,7 +11,6 @@ ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
 
 
-
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
     git mercurial subversion build-essential
@@ -27,9 +26,7 @@ RUN apt-get install -y curl grep sed dpkg && \
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh && \
-    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh && \
-    echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base" >> ~/.bashrc
+    ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 RUN conda config --set always_yes yes --set changeps1 no && \
     conda config --add channels conda-forge && \
     conda update -q --all
@@ -42,7 +39,11 @@ RUN pip install sphinx sphinx_bootstrap_theme sphinx_gallery \
     python-dotenv ipython Image \
     pytest pytest-cov black
 
-RUN echo "export PS1='\[\033[1;31m\]\${APPNAME} \[\033[1;34m\]\W\[\033[0;35m\] \[\033[1;36m\]\n# \[\033[0m\]'" >> ~/.bashrc
+# RUN echo "export PS1='\[\033[1;31m\]\${APPNAME} \[\033[1;34m\]\w\[\033[0;35m\] \[\033[1;36m\]\n# \[\033[0m\]'" >> ~/.bashrc
+
+COPY . /root
+
+
 
 ENV APPNAME pyapps
 
