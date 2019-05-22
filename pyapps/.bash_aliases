@@ -56,11 +56,12 @@ alias ps='ps auxf'
 alias ping='ping -c 10'
 alias less='less -R'
 alias cls='clear'
-alias apt-get='sudo apt-get'
+
+
 alias multitail='multitail --no-repeat -c'
-alias freshclam='sudo freshclam'
+
 alias vi='vim'
-alias svi='sudo vi'
+
 alias vis='vim "+set si"'
 
 # Change directory aliases
@@ -123,9 +124,6 @@ alias ipview="netstat -anpl | grep :80 | awk {'print \$5'} | cut -d\":\" -f1 | s
 # Show open ports
 alias openports='netstat -nape --inet'
 
-# Alias's for safe and forced reboots
-alias rebootsafe='sudo shutdown -r now'
-alias rebootforce='sudo shutdown -r -n now'
 
 # Alias's to show disk space and space used in a folder
 alias diskspace="du -S | sort -n -r |more"

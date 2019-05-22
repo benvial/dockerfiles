@@ -29,6 +29,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
     ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
 RUN conda config --set always_yes yes --set changeps1 no && \
     conda config --add channels conda-forge && \
+    conda update -n base conda  && \
     conda update -q --all
     # conda info -a
 
